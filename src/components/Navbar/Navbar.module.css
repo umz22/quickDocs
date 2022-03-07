@@ -1,0 +1,30 @@
+/* navbar styles */
+.navbar {
+    width: 100%;
+    /* background: #effaf0; */
+    background: linear-gradient(180deg,#0d75fd 0%,  rgb(0, 153, 255)100%);
+    padding: 20px 10px;
+    box-sizing: border-box;
+    z-index: 1;
+    position: relative;
+  }
+  .navbar ul {
+    display: flex;
+    margin: 0 auto;
+    max-width: 960px;
+    align-items: center;
+  }
+  .title {
+    margin-right: auto;
+    font-weight: bold;
+    color: rgb(253, 253, 253);
+    letter-spacing: 1px;
+    font-size: 1.2em;
+  }
+  .navbar button, .navbar a {
+    margin-left: 16px;
+  }
+  .navbar a {
+    color: rgb(253, 253, 253);
+    text-decoration: none;
+  }

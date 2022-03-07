@@ -1,0 +1,40 @@
+.modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(1, 7, 15, 0.116);
+
+}
+
+.modal {
+    height: max-content;
+    display: flex;
+    flex-wrap: wrap;
+    width: 300px;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    border: 1px solid rgb(61, 61, 61);
+
+    backdrop-filter: blur(30px) saturate(97%);
+    -webkit-backdrop-filter: blur(25px) saturate(61%);
+    /* background-color: rgb(6 104 237 / 30%); */
+    background: linear-gradient(180deg, rgb(0, 153, 255) 0%, #0d75fd 100%);
+    border-radius: 10px;
+    padding: 10px 35px;
+    
+}
+
+.close-btn {
+    top: 90%;
+    right: 44%;
+    position: absolute;
+}
+/* only the h2 elements in the modal will be styled */
+.modal h2 {
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+}

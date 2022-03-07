@@ -1,0 +1,11 @@
+.home-page {
+    background-color: aliceblue;
+    min-height: 100%;
+    width: 100%;
+    height: auto;
+    position: absolute;
+}
+
+.test {
+    margin-top: 10vh;
+}

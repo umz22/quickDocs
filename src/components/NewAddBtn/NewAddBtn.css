@@ -1,0 +1,16 @@
+.addSideBar-nav {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 300px;
+  }
+
+  .background {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 300px;
+    background: linear-gradient(180deg, rgb(0, 153, 255) 0%, #0d75fd 100%);
+  }
