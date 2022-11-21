@@ -1,17 +1,25 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
+import NoteEditor from './NoteEditor'
+
+// hooks
 import { useFirestore } from '../../hooks/useFirestore'
+import { useCollection } from '../../hooks/useCollection'
+import { useAuthContext } from '../../hooks/useAuthContext'
 
 // styles
 import './Createdoc.css'
 
 export default function CreateDoc({ handleClose, uid }) {
     const [folder, setFolder] = useState([])
-    // const [newFilter, setNewFilter] = useState('')
+    const [addNew, setAddNew] = useState(false)
     const [title, setTitle] = useState('')
     const [notes, setNotes] = useState('')
     const { addDocument, response } = useFirestore('documents')
+    const { user } = useAuthContext()
+    const { filterBtn } = useCollection('documents', ["uid", "==", user.uid], ["createdAt", "desc"])
 
+    console.log(filterBtn)
 
     const resetForm = () => {
         setFolder('')
@@ -39,16 +47,20 @@ export default function CreateDoc({ handleClose, uid }) {
             id: Math.floor(Math.random() * 1000)
         })
 
-        const newFilter = {
-            folder: folder,
-            title: title,
-            id: Math.floor(Math.random() * 1000)
-        }
-
+        // const newFilter = {
+        //     folder: folder,
+        //     title: title,
+        //     id: Math.floor(Math.random() * 1000)
+        // }
         // console.log(addDocuments)
         // filters(newFilter)
         resetForm()
         handleClose()
+    }
+
+    const addNewHandle = (e) => {
+        console.log('addNew selected')
+        setAddNew(true)
     }
     
  
@@ -63,10 +75,16 @@ export default function CreateDoc({ handleClose, uid }) {
             <form onSubmit={handleSubmit}>
                 <label>
                     <span>Folder:</span>
-                    <input type="text"
-                    onChange={(e) => setFolder(e.target.value)}
-                    value={folder}
-                    />
+                    <select name="folders" onChange={(e) => setFolder(e.target.value)}>
+                        {filterBtn && filterBtn.map((docs) => (
+                            <option id={docs.id} value={docs.title}>{docs.title}</option>
+                        ))}
+                        <option onInput={addNewHandle} value='Add New'>Add New</option>
+                    </select>
+                   {addNew && <input type="text"
+                        onChange={(e) => setFolder(e.target.value)}
+                        value={folder}
+                    />}
                 </label>
                 <label>
                     <span>Title:</span>
@@ -75,7 +93,7 @@ export default function CreateDoc({ handleClose, uid }) {
                         value={title}
                     />
                 </label>
-                <label>
+                {/* <label>
                     <span>Notes:</span>
                     <textarea
                         className='notes'
@@ -85,7 +103,14 @@ export default function CreateDoc({ handleClose, uid }) {
                         rows="20"
                     >
                     </textarea>
-                </label>
+                </label> */}
+
+                <span>Notes:</span>
+                <NoteEditor
+                    details={notes}
+                    setDetails={setNotes}
+                />
+                
                 <button onClick={addFilter} className='submit-button'>Submit</button>
                 <button
                     className='button'

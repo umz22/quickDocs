@@ -65,19 +65,22 @@ export const Sidebar = ({ filterHandle, filterBtn, sideBarData, sidebarPlacehold
     const clickHandle = () => {
         setShowSidebar()
     }
+
+    
     return (
         <div>
             
             <motion.nav
                 onClick={clickHandle}
-                toggle={toggleOpen}
                 initial={false}
                 animate={isOpen ? "open" : "closed"}
-                
-                // ref={containerRef}
-                className={styles['sidebar']}>
+                className={styles['sidebar']}
+                >
 
-                <motion.div onClick={toggleOpen} className={styles['background']} variants={sidebar} />
+                <motion.div 
+                    onClick={toggleOpen} 
+                    className={styles['background']} 
+                    variants={sidebar} />
                 {showSidebar && 
                 <motion.div
                     variants={naviVariants}

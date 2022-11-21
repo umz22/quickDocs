@@ -15,7 +15,13 @@ import styles from './Home.module.css'
 
 export default function Home() {
   const { user } = useAuthContext()
-  const { documents, filterBtn, error, docsPlaceHolder, sidebarPlaceholder, sideBarData } = useCollection('documents')
+  const { 
+    documents, 
+    filterBtn, 
+    error, 
+    docsPlaceHolder, 
+    sidebarPlaceholder, 
+    sideBarData } = useCollection('documents', ["uid", "==", user.uid], ["createdAt", "desc"])
   const [showModal, setShowModal] = useState(false)
   const [filterSearch, setFilterSearch] = useState('')
 

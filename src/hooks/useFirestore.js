@@ -1,6 +1,6 @@
 import { useReducer, useEffect, useState } from "react"
 import { db, timestamp } from "../firebase/config"
-import {serverTimestamp, collection} from 'firebase/firestore'
+import {serverTimestamp, collection, deleteDoc, doc} from 'firebase/firestore'
 import { addDoc } from '@firebase/firestore';
 
 let initialState = {
@@ -17,6 +17,8 @@ const firestoreReducer = (state, action) => {
     case "ERROR":
       return {success: false, isPending: false, error: action.payload, document: null}
     case "ADDED_DOCUMENT":
+      return {success: true, isPending: false, error: null, document: action.payload}
+    case "DELETED_DOCUMENT":
       return {success: true, isPending: false, error: null, document: action.payload}
     default:
       return state
@@ -54,7 +56,16 @@ export const useFirestore = (collections) => {
 
   // delete a document
   const deleteDocument = async (doc) => {
+    dispatch({ type: 'IS_PENDING'})
 
+    try {
+      const deletedDocument = await deleteDoc(doc(ref, doc))
+      dispatchIfNotCancelled({ type: 'DELETED_DOCUMENT', payload: deletedDocument })
+    }
+    catch (err) {
+      dispatchIfNotCancelled({ type: 'ERROR', payload: 'could not delete'})
+
+    }
   }
 
   // add sidebar button

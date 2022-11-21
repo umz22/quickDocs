@@ -18,7 +18,7 @@
 
   .create-doc label {
     /* display: block; */
-    margin-top: 30px;
+    margin-top: 50px;
     font-size: 16px;
     font-weight: 500;
     margin-bottom: 40px;
@@ -94,3 +94,55 @@
     color: #000000;
     border: none;
   }
+
+  .create-form {
+    /* max-width: 600px; */
+    width: 100px;
+    justify-self: center;
+}
+
+.text-editor {
+    min-height: 0px;
+    /* list-style-type:decimal; */
+}
+
+
+.ck.ck-editor__main>.ck-editor__editable {
+  background-color: rgb(240 240 240 / 31%);
+}
+
+.ck.ck-editor__main>.ck-editor__editable :hover {
+  background: none
+}
+
+.ck.ck-icon, .ck.ck-icon * {
+  color: inherit;
+  cursor: inherit;
+  color: white;
+}
+
+.ck-rounded-corners .ck.ck-editor__top .ck-sticky-panel .ck-toolbar {
+  /* background: linear-gradient(180deg,#5d0dfd,#09f 100%); */
+  background: #5d0dfd;
+}
+
+.ck.ck-dropdown.ck-heading-dropdown .ck-dropdown__button .ck-button__label {
+  width: 8em;
+  color: white;
+}
+
+.ck-editor__editable_inline {
+    min-height: 500px;
+    pointer-events: all;
+    color: #000000;
+    
+  }
+
+
+  .text-editor ul {
+    list-style-type: disc;
+    margin-left: 40px;
+    /* padding-left: 50px; */
+  }
+
+ 

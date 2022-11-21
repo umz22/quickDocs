@@ -16,10 +16,50 @@
     padding-top: 20px;
     color: #555;
     margin-bottom: 6px;
+    font-weight: bold;
 }
 
 .note {
     color: #999;
     font-size: 0.9em;
     padding: 20px;
+}
+
+.note ul {
+    list-style-type: disc;
+    text-align: start;
+  }
+
+.note ol {
+    text-align: start;
+  }
+
+.note p {
+    text-align: start;
+}
+
+.note figure {
+    text-align: -webkit-center;
+}
+  
+
+.close {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        cursor: pointer;
+        filter: invert(60%);
+        height: 50px;
+}
+
+.save-changes{
+    cursor: pointer;
+    border-width: 2px;
+    border-color: #6b7280;
+    border-style: solid;
+    width: 50%;
+    color: black;
+    background: #00ee01;
+    border-radius: 30px;
+    margin-left: 120px;
 }

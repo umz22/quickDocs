@@ -5,7 +5,7 @@ import ReactDOM from 'react-dom'
 // styles
 import './DocModal.css'
 
-export default function DocModal({children, note}) {
+export default function DocModal({children}) {
 
     return ReactDOM.createPortal((
         <div className="modal-backdrop">
